@@ -4,8 +4,8 @@
 
 :root {
     /* --primary-bg-color: #623AA2;*/
-   /* 9853af=> e47f38*/
-    --primary-bg-color: #ff6900;
+    /* 9853af=> e47f38 (geri aldım)*/
+    --primary-bg-color: #623AA2;
     --primary-bg-hover: #3d4bb7;
     --primary-bg-border: #3d4bb7;
     --dark-theme: #1d2844;
@@ -18759,7 +18759,7 @@ fieldset:disabled a.btn {
 #count-down .clock-presenter:before {
     content: "";
     position: absolute;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
     inset-inline-start: 0;
     top: 0;
     bottom: 0;
@@ -21364,7 +21364,7 @@ pre {
     box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.2);
     margin-inline-end: 14px;
     color: #fff;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
     box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -21435,7 +21435,7 @@ pre {
     color: #fff;
     font-weight: 500;
     border-block-start: 0;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
     border-radius: 0 6px 6px 0;
     box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.2);
 }
@@ -21800,7 +21800,7 @@ pre {
     background-size: cover;
     position: relative;
     margin: 0;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
 }
 
 .sidebar {
@@ -26899,7 +26899,7 @@ input[type=text]::-ms-clear {
     }
 
     .landing-page .side-menu__item.active .side-menu__label {
-        color: var(--primary-bg-color) !important;
+        color: #e47f38 !important;
     }
 
     .landing-page .side-menu__item.active .side-menu__label::before,
@@ -27784,7 +27784,7 @@ body.dark-theme.landing-page {
     .responsive-navbar.navbar .navbar-collapse {
         position: fixed;
         width: 100%;
-        background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+        background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
         margin-block-start: 0;
         z-index: 999;
         top: 64px;
@@ -29699,7 +29699,7 @@ a.tag-addon:hover {
         color: #fff;
         font-weight: 500;
         border-block-start: 0;
-        background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+        background: linear-gradient(45deg, #e47f38, #e47f38);
         box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.1);
     }
 
@@ -32975,7 +32975,7 @@ body.layout-boxed.horizontal .main-header form[role=search].active input {
 .main-content:after {
     content: "";
     height: 190px;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, #e47f38, #e47f38);
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -34682,7 +34682,7 @@ main-header-grid>a,
 }
 
 .sticky-pin .horizontalMenucontainer .main-header.hor-header {
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
 }
 
 .sticky-pin.main-header {
@@ -34817,7 +34817,7 @@ body.dark-theme {
 }
 
 .dark-theme .main-header {
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
     border-bottom-color: rgba(222, 228, 236, 0.07);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
@@ -40004,13 +40004,13 @@ slide is-expanded side-menu__item {
     height: 40px;
 }
 
-.side-menu__item.active,
-.side-menu__item:hover,
-.side-menu__item:focus {
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
-}
+    .side-menu__item.active,
+    .side-menu__item:hover,
+    .side-menu__item:focus {
+        text-decoration: none;
+        color: #fff;
+        background: linear-gradient(45deg, #e47f38, #e47f38); /*kontrol*/
+    }
 
 .side-menu__item.active .side-menu__label {
     color: #fff !important;
@@ -40258,7 +40258,7 @@ slide is-expanded side-menu__item {
 }
 
 .slide.is-expanded .side-menu__item {
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
 }
 
 @media (max-width: 848px) {
@@ -41179,7 +41179,7 @@ slide is-expanded side-menu__item {
     color: #fff;
     font-weight: 500;
     border-block-start: 0;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, #e47f38, #e47f38);
     box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.1);
     border-radius: 0;
 }
@@ -41637,7 +41637,7 @@ slide is-expanded side-menu__item {
         color: #fff;
         font-weight: 500;
         border-block-start: 0;
-        background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+        background: linear-gradient(45deg, #e47f38, #e47f38);
         box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.1);
     }
 
@@ -41968,7 +41968,7 @@ slide is-expanded side-menu__item {
         color: #fff;
         font-weight: 500;
         border-block-start: 0;
-        background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+        background: linear-gradient(45deg, #e47f38, #e47f38);
         box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.1);
     }
 }
@@ -44576,7 +44576,7 @@ textarea.parsley-success:focus {
     color: #fff;
     font-weight: 700;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
 }
 
 .card--calendar .card--events .list-group-item {
@@ -48676,17 +48676,17 @@ button.bg-dark:focus {
 
 /*-----Gradient-badges-----*/
 .bg-primary-gradient {
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38) !important;
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af) !important;
 }
 
 a.bg-primary-gradient:hover,
 a.bg-primary-gradient:focus {
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38) !important;
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af) !important;
 }
 
 button.bg-primary-gradient:hover,
 button.bg-primary-gradient:focus {
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38) !important;
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af) !important;
 }
 
 .bg-secondary-gradient {
@@ -49058,18 +49058,18 @@ a.bg-dark.focus {
 /*-----Gradient-badges-----*/
 .bg-primary-gradient {
     color: #fff;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
     box-shadow: 0 7px 30px rgba(128, 116, 252, 0.2);
 }
 
 a.bg-primary-gradient:hover {
     color: #fff;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
 }
 
 a.bg-primary-gradient:focus {
     color: #fff;
-    background: linear-gradient(45deg, var(--primary-bg-color), #e47f38);
+    background: linear-gradient(45deg, var(--primary-bg-color), #9853af);
     outline: 0;
 }
 

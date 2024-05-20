@@ -2,8 +2,6 @@
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using OdiAdmin.Exceptions;
 using OdiAdmin.Services.Identity;
-using RestSharp;
-using System.Net;
 
 namespace OdiAdmin.Handler
 {

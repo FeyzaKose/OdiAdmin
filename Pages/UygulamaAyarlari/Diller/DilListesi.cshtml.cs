@@ -1,20 +1,28 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OdiAdmin.Models;
+using OdiAdmin.Models.UygulamaAyarlari;
 using OdiAdmin.Services.OdiUsers;
 using OdiAdmin.Services.UygulamaAyarlari;
 
 namespace OdiAdmin.Pages.UygulamaAyarlari.Diller
 {
+    [Authorize]
     public class DilListesiModel : PageModel
     {
-        IOdiUserService _service;
-        public DilListesiModel(IOdiUserService service) { 
+        IDilService _service;
+        [BindProperty]
+		public List<Dil> dilListesi { get; set; } =new List<Dil>();
+
+		public DilListesiModel(IDilService service) { 
         _service    = service;
         }
         public async void OnGet()
         {
-            OdiUser user = await _service.GetUser();
+            ApiResponse<List<Dil>> res = await _service.DilListesiAsyc();
+            dilListesi = res.Data as List<Dil>;
+
         }
     }
 }

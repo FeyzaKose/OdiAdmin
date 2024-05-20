@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -8,3 +8,51 @@
     <h1 class="display-4">Welcome @* @Model.odiUser.AdSoyad *@</h1>
    
 </div>
+@section customscripts {
+
+    <script>
+
+        var app = angular.module('myApp', ['ngAnimate']);
+        app.controller('myCtrl', function ($scope, $http) {
+            var parent = $scope;
+
+            //loading tanımlamları
+            parent.dilListeLoading = true;
+            parent.fizikselOzellikTipleriLoading = true;
+
+            //TANIMLAMALAR
+            parent.errorMsg = "";
+            parent.selectedLanguage = "tr";
+            parent.dilListesi = [];
+
+
+
+
+
+            //METOTLAR
+            parent.DilListesiGetir = function () {
+                $.ajax({
+                    url: '/index?handler=DilListesi',
+                    method: 'GET',
+                    data: {
+                        // İsteğe bağlı veri
+                    },
+                    success: function (response) {
+                        console.log('Response:', response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+                // var json =
+                // parent.dilListesi = @Model.dilListesi;
+                // console.log("parent.dilListesi")
+                // console.log(parent.dilListesi)
+            }
+
+
+            //START
+            parent.DilListesiGetir();
+        });
+    </script>
+}

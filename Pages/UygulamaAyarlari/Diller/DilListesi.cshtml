@@ -33,3 +33,11 @@
             </div>
         </div>
     </div>
+
+
+    <table>
+        @foreach (var dil in Model.dilListesi)
+        {
+            <tr><td>@dil.BayrakLinki</td></tr>
+        }
+    </table>

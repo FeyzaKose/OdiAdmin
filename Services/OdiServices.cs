@@ -4,6 +4,8 @@ using OdiAdmin.Models;
 using OdiAdmin.Services.Identity;
 using OdiAdmin.Services.KullaniciServices;
 using OdiAdmin.Services.OdiUsers;
+using OdiAdmin.Services.UygulamaAyarlari;
+using OdiAdmin.Services.UygulamaAyarlari.FizikselOzellikler;
 
 namespace OdiAdmin.Services
 {
@@ -23,8 +25,18 @@ namespace OdiAdmin.Services
 
             services.AddHttpClient<IKullaniciService, KullaniciService>(opt =>
             {
-                opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
+                opt.BaseAddress = new Uri(serviceApiSettings.GatewayBaseUri);
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-        }
+
+            services.AddHttpClient<IFizikselOzellikService, FizikselOzellikService>(opt =>
+            {
+                opt.BaseAddress = new Uri(serviceApiSettings.GatewayBaseUri);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IDilService, DilService>(opt =>
+			{
+				opt.BaseAddress = new Uri(serviceApiSettings.GatewayBaseUri);
+			}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+		}
 	}
 }

@@ -4,6 +4,6 @@ namespace OdiAdmin.Services.KullaniciServices
 {
     public interface IKullaniciService
     {
-        Task<OdiResult> KullaniciListesiGetir();
+        Task<ApiResponse<List<Kullanici>>> YetenekTemsilcisiListeGetir();
     }
 }

@@ -21,7 +21,7 @@ namespace OdiAdmin.Services.OdiUsers
         }
         public async Task<OdiUser> GetUser()
         {
-            ApiResponse<OdiUser> resp = await _client.GetFromJsonAsync<ApiResponse<OdiUser>>(Endpoints.Kullanici.GetirByToken);
+            ApiResponse<OdiUser> resp = await _client.GetFromJsonAsync<ApiResponse<OdiUser>>(Endpoints.GlobalKullanici.GetirByToken);
 
             OdiUser user = resp.Data;
 

@@ -33,7 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\NewFolder\" />
     <Folder Include="Pages\Partials\" />
+    <Folder Include="wwwroot\pages\uygulamaAyarlari\" />
   </ItemGroup>
 
 </Project>

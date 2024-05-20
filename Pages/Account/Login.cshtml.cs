@@ -1,8 +1,12 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OdiAdmin.Extensions;
 using OdiAdmin.Models;
 using OdiAdmin.Models.AccountModels;
+using OdiAdmin.Models.UygulamaAyarlari;
 using OdiAdmin.Services.Identity;
+using OdiAdmin.Services.UygulamaAyarlari;
 using System.Text.Json;
 
 namespace OdiAdmin.Pages.Account
@@ -14,9 +18,11 @@ namespace OdiAdmin.Pages.Account
 
 
 		IIdentityService _identityService;
-		public LoginModel(IIdentityService identityService)
+		IDilService _dilservice;
+		public LoginModel(IIdentityService identityService,IDilService dilService)
 		{
 			_identityService = identityService;
+			_dilservice = dilService;
 		}
 
 
@@ -49,7 +55,11 @@ namespace OdiAdmin.Pages.Account
 			}
 
 			res.Sonuc = true;
-			res.Mesaj = "Dashboard a yönlendiriliyorsunuz";
+
+			 ////List<Dil> dilList = await _dilservice.SessionDilListesiAsyc();
+    //        HttpContext.Session.SetObject("LanguageList", dilList);
+
+            res.Mesaj = "Dashboard a yönlendiriliyorsunuz"; 
 
 			return Content(JsonSerializer.Serialize(res));
         }

@@ -6,6 +6,7 @@ namespace OdiAdmin
     {
         public string AdSoyad { get; set; }
         public int UlkeTelefonKodu { get; set; }
+        public string TelefonNumarasi { get; set; }
         public string KayitTuruKodu { get; set; }
         public string KayitGrubuKodu { get; set; }
         public string ProfilFotografi { get; set; }

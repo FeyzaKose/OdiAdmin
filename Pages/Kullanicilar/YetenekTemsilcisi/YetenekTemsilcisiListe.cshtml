@@ -16,76 +16,131 @@
     </div>
 </div>
 <div class="row row-sm">
-	<div class="col-md-3">
-		<div class="card  widgets-cards bg-danger-gradient shadow-danger text-default border-0">
-			<div class="card-body">
-				<div class="d-flex">
-					<div class="ms-2 mt-2">
-						<h2 class="mb-0 tx-22">Toplam</h2>
-					</div>
-					<h2 class="mt-2 ms-auto">2</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="card  widgets-cards bg-success-gradient shadow-success text-default border-0">
-			<div class="card-body">
-				<div class="d-flex">
-					<div class="ms-2 mt-2">
-						<h2 class="mb-0 tx-22">Onay Bekleyen</h2>
-					</div>
-					<h2 class="mt-2 ms-auto">1</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="card  widgets-cards bg-secondary-gradient shadow-secondary text-default border-0">
-			<div class="card-body">
-				<div class="d-flex">
-					<div class="ms-2 mt-2">
-						<h2 class="mb-0 tx-22">Onaylı</h2>
+    <div class="col-md-3">
+        <div class="card  widgets-cards bg-danger-gradient shadow-danger text-default border-0">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="ms-2 mt-2">
+                        <h2 class="mb-0 tx-22">Toplam</h2>
+                    </div>
+                    <h2 class="mt-2 ms-auto">2</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card  widgets-cards bg-success-gradient shadow-success text-default border-0">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="ms-2 mt-2">
+                        <h2 class="mb-0 tx-22">Onay Bekleyen</h2>
+                    </div>
+                    <h2 class="mt-2 ms-auto">1</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card  widgets-cards bg-secondary-gradient shadow-secondary text-default border-0">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="ms-2 mt-2">
+                        <h2 class="mb-0 tx-22">Onaylı</h2>
 
-					</div>
-					<h2 class="mt-2 ms-auto">1</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="card  widgets-cards bg-info-gradient shadow-info text-default border-0">
-			<div class="card-body">
-				<div class="d-flex">
-					<div class="ms-2 mt-2">
-						<h2 class="mb-0 tx-22">Engelli</h2>
-					</div>
-					<h2 class="mt-2 ms-auto">0</h2>
-				</div>
-			</div>
-		</div>
-	</div>
+                    </div>
+                    <h2 class="mt-2 ms-auto">1</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card  widgets-cards bg-info-gradient shadow-info text-default border-0">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="ms-2 mt-2">
+                        <h2 class="mb-0 tx-22">Engelli</h2>
+                    </div>
+                    <h2 class="mt-2 ms-auto">0</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card card-img-holder text-default bg-color">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped card-table mt-0 mb-0 table-nowrap border ">
+                        <thead>
+                            <tr>
+                                <th class="align-middle">Profil Resmi</th>
+                                <th class="align-middle">Kullanıcı Adı</th>
+                                <th class="align-middle">Ulke Kodu</th>
+                                <th class="align-middle">Telefon</th>
+                                <th class="align-middle">Email</th>
+                                <th class="align-middle">Kayıt Grubu</th>
+                                <th class="align-middle">Kayıt Türü</th>
+                                <th class="align-middle">Durum</th>
+                                <th class="align-middle">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var yt in Model.YetenekTemsilcileri)
+                            {
+                                <tr>
+                                    <td class="align-middle">
+                                        @if (string.IsNullOrEmpty(yt.ProfilFotografi))
+                                        {
+                                            <img alt="avatar" class="rounded-circle" height="75" src="~/images/user.png">
+                                        }
+                                        else
+                                        {
+                                            <img alt="avatar" class="rounded-circle" height="75" src="@yt.ProfilFotografi">
+                                        }
+                                    </td>
+                                    <td class="align-middle">@yt.AdSoyad</td>
+                                    <td class="align-middle">@yt.UlkeTelefonKodu</td>
+                                    <td class="align-middle">@yt.PhoneNumber</td>
+                                    <td class="align-middle">@yt.Email</td>
+                                    <td class="align-middle">@yt.KayitGrubuKodu</td>
+                                    <td class="align-middle">@yt.KayitTuruKodu</td>
+                                    <td class="align-middle"><span class="badge bg-success">Onaylı</span></td>
+                                    <td class="align-middle">
+                                        <a href="#"><span class="badge bg-info me-2"><i class="fa fa-address-card"></i> Profil</span></a>
+                                        <a href="#"><span class="badge bg-info me-2"><i class="fa fa-users"></i> Oyuncular</span></a>
+                                        <a href="#"> <span class="badge bg-secondary me-2">Engelle</span></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section customscripts {
 
-	<script>
+    <script>
 
-		var app = angular.module('myApp', ['ngAnimate']);
-		app.controller('myCtrl', function ($scope) {
-			var parent = $scope;
+        var app = angular.module('myApp', ['ngAnimate']);
+        app.controller('myCtrl', function ($scope) {
+            var parent = $scope;
 
-			//TANIMLAMALAR
+            //TANIMLAMALAR
 
-			//loading tanımlamları
-			parent.listeLoading = true;
-			parent.info1Loading = true;
-			parent.info2Loading = true;
-			parent.info3Loading = true;
-			parent.info4Loading = true;
+            //loading tanımlamları
+            parent.listeLoading = true;
+            parent.info1Loading = true;
+            parent.info2Loading = true;
+            parent.info3Loading = true;
+            parent.info4Loading = true;
 
 
-			//METOTLAR
+            //METOTLAR
 
-		});
-	</script>
+        });
+    </script>
 }
