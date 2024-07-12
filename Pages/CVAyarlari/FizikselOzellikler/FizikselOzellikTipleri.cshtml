@@ -1,5 +1,5 @@
-﻿@page "/uygulama-ayarlari/fiziksel-ozellik-tipleri"
-@model OdiAdmin.Pages.UygulamaAyarlari.FizikselOzellikler.FizikselOzellikTipleriModel
+﻿@page "/cv-ayarlari/fiziksel-ozellik-tipleri"
+@model OdiAdmin.Pages.CVAyarlari.FizikselOzellikler.FizikselOzellikTipleriModel
 @{
 }
 <div class="breadcrumb-header justify-content-between">
@@ -18,15 +18,17 @@
 <div class="row row-sm">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-body">
-
+            <div class="card-body position-relative">
+                <div class="spinner-container" ng-if="dilListeLoading">
+                    <div class="spinner-border spinner-border-sm text-secondary"  role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
                 <div class="btn-flex">
                     <div type="button" ng-if="!dilListeLoading" ng-repeat="dil in dilListesi" ng-click="dilDegistir(dil)" class="{{selectedLanguage.Kisaltma ===dil.Kisaltma ? dilButtonActiveClass : dilButtonClass}}">
                         <img class="me-2" src="{{dil.BayrakLinki}}" />{{dil.Adi}}
                     </div>
-                    <div class="spinner-border spinner-border-sm text-secondary" ng-if="dilListeLoading" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
+                  
                 </div>
             </div>
         </div>
@@ -63,12 +65,11 @@
                         <input ng-model="fizikselOzellikTip.FizikselOzellikTipKodu" placeholder="Fiziksel Özellik Tip Kodu" class="form-control mg-t-20" placeholder="Input box" type="text">
                         <div class="d-flex align-items-center mg-t-20 ">
                             <label class="me-2 m-0 text-muted">Durum : </label>
-                            <div  ng-click="fizikselOzellikTip.Durum==true? fizikselOzellikTip.Durum=false : fizikselOzellikTip.Durum=true " class="main-toggle main-toggle-success  {{fizikselOzellikTip.Durum==true? 'on':''}}">
+                            <div ng-click="fizikselOzellikTip.Durum==true? fizikselOzellikTip.Durum=false : fizikselOzellikTip.Durum=true " class="main-toggle main-toggle-success  {{fizikselOzellikTip.Durum==true? 'on':''}}">
                                 <span></span>
                             </div>
                         </div>
-                       
-                        <a href="javascript:void(0);" class="btn btn-secondary mg-t-20 float-end" data-bs-target="#formOnay" data-bs-toggle="modal">Kaydet</a>
+                        <a href="javascript:void(0);" ng-click="formControl()" class="btn btn-secondary mg-t-20 float-end">{{formButton}}</a>
                         <a href="javascript:void(0);" class="btn btn-outline-primary mg-t-20 float-end me-2" ng-click="fizikselOzellikTip=fizikselOzellikTipDefault">Temizle</a>
                     </div>
                 </div>
@@ -78,43 +79,7 @@
     </div>
 </div>
 <!--end of form-->
-<!--Form Onay Model-->
-<div class="modal  effect-scale" data-bs-backdrop="static" tabindex="-1" data-bs-keyboard="false" id="formOnay">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content modal-content-demo">
-            <div class="modal-header">
-                <h6 class="modal-title">{{formBasligi}}</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-               <div class="table-responsive mg-b-20">
-                    <table class="table  table-striped card-table mt-0 mb-0 table-nowrap border  ">
-                        <tr class="bg-gray-300">
-                            <th class="align-middle">Dil</th>
-                            <th class="align-middle">Adi</th>
-                            <th class="align-middle">Kodu</th>
-                            <th class="align-middle">Durum</th>
-                        </tr>
-                        <tbody>
-                            <tr>
-                                <td class="align-middle">{{selectedLanguage.Adi}}</td>
-                                <td class="align-middle">{{fizikselOzellikTip.FizikselOzellikTipAdi}}</td>
-                                <td class="align-middle">{{fizikselOzellikTip.FizikselOzellikTipKodu}}</td>
-                                <td class="align-middle">{{fizikselOzellikTip.Durum==true ? 'Aktif' :'Pasif'}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-               </div>
-                <div class="card-title mg-t-20 text-muted"> Lütfen verileri kontrol ediniz.</div>
-            </div>
-            <div class="modal-footer">
-               
-                <button class="btn  btn-secondary" ng-click="FormSubmit()" type="button">Kaydet</button>
-                <button class="btn  btn-danger" data-bs-dismiss="modal" id="btnFormConfirmModalClose" type="button">İptal</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End Of Form Onay Model-->
+
 <div class="row row-sm">
     <div class="col-md-12">
         <div class="card overflow-hidden">
@@ -123,15 +88,17 @@
                     <h4 class="card-title mg-b-10"> Fiziksel Özellik Tip Listesi ({{selectedLanguage.Adi}})</h4>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="spinner-border spinner-border-sm text-secondary" ng-if="tableLoading" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
+            <div class="card-body position-relative">
+                <div class="spinner-container" ng-if="tableLoading">
+                    <div class="spinner-border spinner-border-sm text-secondary"  role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+               </div>
                 <div ng-if="!tableLoading" class="table-responsive">
                     <table class="table  table-striped card-table mt-0 mb-0 table-nowrap border">
                         <thead>
                             <tr>
-                                <th class="align-middle">Adi</th>
+                                <th class="align-middle">Adı</th>
                                 <th class="align-middle">Kodu</th>
                                 <th class="align-middle">Durum</th>
                                 <th class="align-middle">Fiziksel Özellikler</th>
@@ -142,11 +109,17 @@
                             <tr ng-repeat="tip in fizikselOzellikTipListesi">
                                 <td>{{tip.FizikselOzellikTipAdi}}</td>
                                 <td>{{tip.FizikselOzellikTipKodu}}</td>
-                                <td>{{tip.Durum}}<a href="#">Durum Değiştir</a></td>
+                                <td>
+                                    <span class="badge ms-2 rounded-pill" ng-class="{'bg-success': tip.Durum, 'bg-danger': !tip.Durum}">
+                                        <i class="fa " ng-class="{'fa-check': tip.Durum, 'fa-times': !tip.Durum}"></i>
+                                    </span>
+                                    <a class="mx-2" ng-click="FizikselOzellikTipiDurumDegistir(tip.Id)" href="javascript:void(0)">
+                                        <small class="text-primary">Değiştir </small>
+                                       
+                                    </a>
+                                </td>
                                 <td><a href="#">Özellikler</a></td>
-                                <td><a href="#" ng-click="edit(tip)">Düzenle</a></td>
-                                <td><a href="#">Sil</a></td>
-
+                                <td><a href="#" class="text-primary" ng-click="edit(tip)"> <i class="fa fa-edit"></i></a><a href="#" class="mx-2 text-danger">  <i class="fa fa-trash"></i></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -156,14 +129,14 @@
     </div>
 </div>
 @section customscripts {
-  <script>
-      //JAVASCRIPT-JQUERY
-       
-      function formConfirmModalClose() {
-          $('#btnFormConfirmModalClose').click();
-      }
+    <script>
+        //JAVASCRIPT-JQUERY
 
-      //ANGULAR
+        function formConfirmModalClose() {
+            $('#btnFormConfirmModalClose').click();
+        }
+
+        //ANGULAR
         var app = angular.module('myApp', ['ngAnimate']);
         app.controller('myCtrl', function ($scope, $http) {
             var parent = $scope;
@@ -175,20 +148,21 @@
             parent.tableLoading = true;
 
             //genel
-            parent.errorMsg = "";
+            parent.errorMsg = "Duzeltilecek alanlar var";
             parent.modelError = "";
-            parent.displayError = false;
+            parent.displayError = true;
             parent.pageUrl = "/uygulama-ayarlari/fiziksel-ozellik-tipleri";
             parent.postData = {};
             //dil alanı tanımlamaları
             parent.dilButtonClass = "btn btn-outline-light me-2";
             parent.dilButtonActiveClass = "btn btn-outline-secondary me-2"
-            parent.selectedLanguage = { Kisaltma: 'tr', Adi: "Türkçe", id: 1 };
+            parent.selectedLanguage = { Kisaltma: 'tr', Adi: "Türkçe", Id: 1 };
             parent.dilListesi = [];
             //fiziksel ozellik tipi tanımlamalar
             parent.tableLoading = true;
-            parent.fizikselOzellikTipListesi = [];            
-            parent.fizikselOzellikTip = { "Id": 0, "FizikselOzellikTipAdi": "", "FizikselOzellikTipKodu": "", "Durum": true, "DilId": parent.selectedLanguage.id };
+            parent.fizikselOzellikTipListesi = [];
+            parent.fizikselOzellikTip = { "Id": 0, "FizikselOzellikTipAdi": "", "FizikselOzellikTipKodu": "", "Durum": true, "DilId": parent.selectedLanguage.Id };
+            parent.fizikselOzellikTipDefault = { "Id": 0, "FizikselOzellikTipAdi": "", "FizikselOzellikTipKodu": "", "Durum": true, "DilId": parent.selectedLanguage.Id };
             //form tanımlamaları
             parent.formBasligi = "Yeni Fiziksel Özellik Tipi";
             parent.formButton = "Kaydet";
@@ -198,13 +172,6 @@
 
 
             //METOTLAR
-
-
-
-
-
-
-
 
             //api metotlar
             parent.DilListesiGetir = function () {
@@ -233,9 +200,9 @@
                 });
             };
             parent.FizikselOzellikListesiGetir = function () {
-                parent.postData = { "DilId": parent.selectedLanguage.id };
+                parent.postData = { "DilId": parent.selectedLanguage.Id };
                 $.ajax({
-                    url: '?handler=FizikselOzellikListesiGetir',
+                    url: '?handler=FizikselOzellikTipiListesiGetir',
                     method: 'post',
                     dataType: "json",
                     contentType: "application/json",
@@ -259,56 +226,73 @@
                 });
 
             }
-
-
             parent.FormSubmit = function () {
-                parent.formKayitPath = parent.fizikselOzellikTip.Id == 0 ? '?handler=YeniFizikselOzellik' :  '?handler=FizikselOzellikGuncelle'
-
-                var sonuc = parent.formControl();
-                
-                
-                if (sonuc) {
-                    $.ajax({
-                        url: parent.formKayitPath,
-                        method: 'post',
-                        contentType: "application/json",
-                        dataType: "json",
-                        data: JSON.stringify(parent.fizikselOzellikTip),
-                        success: function (resp) {
-                            var res = resp; /* JSON.parse(resp); */
-                            if (res.Sonuc) {
-                                parent.fizikselOzellikTipListesi = res.Data;
-                                parent.fizikselOzellikTip = { "Id": 0, "FizikselOzellikTipAdi": "", "FizikselOzellikTipKodu": "", "Durum": true, "DilId": parent.selectedLanguage.id };
-                                parent.$apply();
-                                formConfirmModalClose();
-                            }
-                            else {
-                                parent.errorMsg = res.Mesaj;
-                                parent.$apply();
-                                parent.displayError = true;
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            parent.errorMsg = error;
+                parent.formKayitPath = parent.fizikselOzellikTip.Id == 0 ? '?handler=YeniFizikselTipiOzellik' : '?handler=FizikselOzellikTipiGuncelle'
+                console.log(parent.fizikselOzellikTip);
+                console.log(parent.formKayitPath)
+                $.ajax({
+                    url: parent.formKayitPath,
+                    method: 'post',
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: parent.fizikselOzellikTip,
+                    success: function (resp) {
+                        var res = resp; /* JSON.parse(resp); */
+                        if (res.Sonuc) {
+                            parent.fizikselOzellikTipListesi = res.Data;
+                            parent.fizikselOzellikTip = parent.fizikselOzellikTipDefault;
+                            parent.$apply();
+                            formConfirmModalClose();
+                        }
+                        else {
+                            parent.errorMsg = res.Mesaj;
+                            parent.$apply();
                             parent.displayError = true;
                         }
-                    });
-                }
-                else {
-                    $('#btnFormConfirmModalClose').click();
-                    parent.errorMsg = "Fiziksel Özellik Tip Adı ve Fiziksel Özellik Tip Kodu bilgilerini giriniz";
-                }
+                    },
+                    error: function (xhr, status, error) {
+                        parent.errorMsg = error;
+                        parent.displayError = true;
+                    }
+                });
             }
 
+            parent.FizikselOzellikTipiDurumDegistir = function (tipId) {
+
+                parent.postData = { "FizikselOzellikTipiId": tipId };
+                $.ajax({
+                    url: '?handler=FizikselOzellikTipiDurumDegistir',
+                    method: 'post',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(parent.postData),
+                    success: function (resp) {
+                        if (resp.Sonuc) {
+                            parent.fizikselOzellikTipListesi = resp.Data;
+
+                            parent.$apply();
+                        }
+                        else {
+                            parent.errorMsg = res.Mesaj;
+                            parent.displayError = true;
+                            parent.$apply();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        parent.errorMsg = error;
+                        parent.displayError = true;
+                    }
+                })
+            }
             // frontend metotlar
             parent.dilDegistir = function (dil) {
                 parent.selectedLanguage = dil;
-
+                parent.FizikselOzellikListesiGetir();
             }
             parent.formControl = function () {
                 var error = false;
-               
-                if (parent.fizikselOzellikTip.FizikselOzellikTipAdi === "") {
+
+                if (parent.fizikselOzellikTip.FizikselOzellikTipAdi === "" || parent.fizikselOzellikTip.FizikselOzellikTipAdi === null) {
                     parent.modelError = "Fiziksel özellik tip adını giriniz";
                     error = true;
                 }
@@ -316,14 +300,19 @@
                     parent.modelError = "Fiziksel özellik tip kodu";
                     error = true;
                 }
-                if (error == false) return true;
-                else return false;
+                console.log(parent.fizikselOzellikTip)
+                console.log(parent.fizikselOzellikTip)
+                if (error == true) parent.errorMsg = "Fiziksel Özellik Tip Adı ve Fiziksel Özellik Tip Kodu bilgilerini giriniz";
+                else parent.FormSubmit();
             }
             parent.edit = function (tip) {
-                console.log(tip)
                 parent.fizikselOzellikTip = tip;
             }
+            parent.reset = function () {
+                parent.errorMsg = "";
+                parent.fizikselOzellikTip = parent.fizikselOzellikTipDefault;
 
+            }
 
             //START
             angular.element(document).ready(function () {
@@ -333,5 +322,5 @@
             });
 
         });
-  </script>
+    </script>
 }

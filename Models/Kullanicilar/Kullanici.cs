@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace OdiAdmin.Models
+namespace OdiAdmin.Models.Kullanicilar
 {
     public class Kullanici
     {

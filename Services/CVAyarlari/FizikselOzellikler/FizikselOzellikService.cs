@@ -1,10 +1,10 @@
 ﻿using OdiAdmin.Models;
-using OdiAdmin.Models.UygulamaAyarlari;
+using OdiAdmin.Models.CVAyarlari;
 using OdiAdmin.Tools;
 
-namespace OdiAdmin.Services.UygulamaAyarlari.FizikselOzellikler
+namespace OdiAdmin.Services.CVAyarlari.FizikselOzellikler
 {
-    public class FizikselOzellikService:IFizikselOzellikService
+    public class FizikselOzellikService : IFizikselOzellikService
     {
         private readonly HttpClient _client;
 
@@ -22,7 +22,7 @@ namespace OdiAdmin.Services.UygulamaAyarlari.FizikselOzellikler
 
             if (response.IsSuccessStatusCode)
             {
-                 apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<List<FizikselOzellikTipi>>>();
+                apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<List<FizikselOzellikTipi>>>();
             }
             else
             {
@@ -67,9 +67,26 @@ namespace OdiAdmin.Services.UygulamaAyarlari.FizikselOzellikler
             }
             return apiResponse;
         }
+        public async Task<ApiResponse<List<FizikselOzellikTipi>>> FizikselOzellikTipiDurumDegistir(FizikselOzellikTipIdDTO tipId)
+        {
+            ApiResponse<List<FizikselOzellikTipi>> apiResponse = new ApiResponse<List<FizikselOzellikTipi>>();
+            var response = await _client.PostAsJsonAsync(Endpoints.UygulamaBilgileri.FizikselOzellikler.TipDurumDegistir, tipId);
+
+            if (response.IsSuccessStatusCode)
+            {
+                apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<List<FizikselOzellikTipi>>>();
+            }
+            else
+            {
+                apiResponse.IsSuccessful = false;
+                apiResponse.Message = "Api request sırasında bir sorun oluştu";
+            }
+            return apiResponse;
+        }
         private class DilIdObj
         {
             public int DilId { get; set; }
         }
+
     }
 }

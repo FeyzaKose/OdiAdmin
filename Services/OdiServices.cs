@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OdiAdmin.Handler;
 using OdiAdmin.Models;
+using OdiAdmin.Services.CVAyarlari.FizikselOzellikler;
 using OdiAdmin.Services.Identity;
 using OdiAdmin.Services.KullaniciServices;
 using OdiAdmin.Services.OdiUsers;
 using OdiAdmin.Services.UygulamaAyarlari;
-using OdiAdmin.Services.UygulamaAyarlari.FizikselOzellikler;
 
 namespace OdiAdmin.Services
 {
-	public static class OdiServices
+    public static class OdiServices
 	{
 		public static void AddOdiServices(this IServiceCollection services, IConfiguration Configuration)
 		{

@@ -18,6 +18,7 @@
                 public const string TipListesi = "/servis/performer/admin-fiziksel-ozellik-tipi-liste";
                 public const string YeniTip = "/servis/performer/admin-yeni-fiziksel-ozellik-tipi";
                 public const string TipGuncelle = "/servis/performer/admin-fiziksel-ozellik-tipi-guncelle";
+                public const string TipDurumDegistir = "/servis/performer/admin-fiziksel-ozellik-tipi-durum-degistir";
             }
 
             public const string KullaniciListesi = "/user/kullanici-listesi";

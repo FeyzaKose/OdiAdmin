@@ -1,0 +1,8 @@
+﻿@page "/kullanicilar/yeni-kullanici"
+@model OdiAdmin.Pages.Kullanicilar.YeniKullaniciModel
+@using OdiAdmin.Models.PartialViewModels.CommonPartialViews
+@{
+    BreadCrumbViewModel breadcrumb = new BreadCrumbViewModel { SayfaAdi = "Yeni Kullanıcı",BreadcrumbPart1="Kullanicilar" ,BreadcrumbPart2="Yeni Kullanıcı" };
+}
+<partial name="~/Pages/CommonPartialViews/BreadCrumbView.cshtml" model="@breadcrumb" />
+<partial name="~/Pages/Kullanicilar/PartialViews/YeniKullaniciView.cshtml" model="@Model.ViewModal"  />

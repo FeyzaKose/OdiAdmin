@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using OdiAdmin.Handler;
 using OdiAdmin.Models;
 using OdiAdmin.Services;
-using OdiAdmin.Services.OdiUsers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,7 +48,7 @@ app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
-
 app.MapRazorPages();
+
 
 app.Run();

@@ -42,7 +42,7 @@
 <body id="body" class="main-body app sidebar-mini ltr " ng-app="myApp" ng-controller="myCtrl">
 
     <!-- Loader -->
-    <div id="global-loader">
+    <div id="global-loader" ng-if="loading">
         <img src="~/img/loaders/loader-4.svg" class="loader-img" alt="Loader">
     </div>
     <!-- /Loader -->
@@ -132,7 +132,22 @@
                                                     <li><a class="slide-item" href="~/uygulama-ayarlari/kullanilan-diller">Kullanılan Diller</a></li>
                                                     <li><a class="slide-item" href="~/uygulama-ayarlari/telefon-kodlari">Telefon Kodları</a></li>
                                                     <li><a class="slide-item" href="~/uygulama-ayarlari/kayit-gruplari">Kayıt Grupları</a></li>
-                                                    <li><a class="slide-item" href="~/uygulama-ayarlari/fiziksel-ozellik-tipleri">Fiziksel Özellik Tipleri</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="slide">
+                            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><i class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">CV Ayarları</span><i class="angle fe fe-chevron-down"></i></a>
+                            <ul class="slide-menu">
+                                <li class="panel sidetab-menu">
+                                    <div class="panel-body tabs-menu-body p-0 border-0">
+                                        <div class="tab-content">
+                                            <div class="tab-pane tab-content-show active" id="side11">
+                                                <ul class="sidemenu-list">
+                                                    <li><a class="slide-item" href="~/cv-ayarlari/fiziksel-ozellik-tipleri">Fiziksel Özellik Tipleri</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -148,9 +163,10 @@
                                         <div class="tab-content">
                                             <div class="tab-pane tab-content-show active" id="side11">
                                                 <ul class="sidemenu-list">
-                                                    <li><a class="slide-item" href="/uygulama-bilgileri/kullanilan-diller">Yapım Grubu</a></li>
+                                                    <li><a class="slide-item" href="/kullanicilar/kullanilan-diller">Yapım Grubu</a></li>
                                                     <li><a class="slide-item" href="/kullanicilar/yetenek-temsilcileri">Yetenek Temsilcileri</a></li>
-                                                    <li><a class="slide-item" href="uygulama-bilgileri/kayit-gruplari">Performer Listesi</a></li>
+                                                    <li><a class="slide-item" href="/kullanicilar/kayit-gruplari">Performer Listesi</a></li>
+                                                    <li><a class="slide-item" href="/kullanicilar/yeni-kullanici">Yeni Kullanıcı</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -187,10 +203,10 @@
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 
-  @*   <!-- JQuery min js -->
+    @*   <!-- JQuery min js -->
     <script src="~/plugins/jquery/jquery.min.js"></script> *@
 
-   @*  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @*  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Bootstrap Bundle js -->
     <script src="~/plugins/bootstrap/popper.min.js"></script>
@@ -219,9 +235,9 @@
     <script src="~/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="~/plugins/perfect-scrollbar/p-scroll.js"></script>
 
-  
 
-  
+
+
     <!-- Sidebar js -->
     <script src="~/plugins/side-menu/sidemenu.js"></script>
 
@@ -235,7 +251,7 @@
 
     <!-- ApexChart -->
     <script src="~/js/apexcharts.min.js"></script>
-   
+
 
     <!-- Custom js -->
 
@@ -304,5 +320,13 @@
     <!-- Custom js -->
     <script src="~/js/custom.js"></script>
     @RenderSection("customscripts", false)
+    <script>
+        var app = angular.module('myApp', ['ngAnimate']);
+        app.controller('myCtrl', function ($scope, $http) {
+            var parent = $scope;
+            @RenderSection("angularScripts",false)
+
+        });
+    </script>
 </body>
 </html>

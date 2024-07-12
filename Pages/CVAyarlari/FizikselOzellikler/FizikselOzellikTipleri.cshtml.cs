@@ -2,12 +2,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OdiAdmin.Models;
+using OdiAdmin.Models.CVAyarlari;
 using OdiAdmin.Models.UygulamaAyarlari;
+using OdiAdmin.Services.CVAyarlari.FizikselOzellikler;
 using OdiAdmin.Services.UygulamaAyarlari;
-using OdiAdmin.Services.UygulamaAyarlari.FizikselOzellikler;
 using System.Text.Json;
 
-namespace OdiAdmin.Pages.UygulamaAyarlari.FizikselOzellikler
+namespace OdiAdmin.Pages.CVAyarlari.FizikselOzellikler
 {
     [Authorize]
     [IgnoreAntiforgeryToken]
@@ -26,33 +27,39 @@ namespace OdiAdmin.Pages.UygulamaAyarlari.FizikselOzellikler
         public List<FizikselOzellikTipi> tipListesi { get; set; }
         public async Task OnGet()
         {
-            
+
         }
 
-       
+
         public async Task<IActionResult> OnPostDilListesiAsync()
         {
 
             dilListesi = await _dilService.SessionDilListesiAsyc();
-            OdiResult res = new OdiResult { Sonuc = true,Data= dilListesi };     
+            OdiResult res = new OdiResult { Sonuc = true, Data = dilListesi };
             return Content(JsonSerializer.Serialize(res));
         }
-        public async Task<IActionResult> OnPostFizikselOzellikListesiGetirAsync([FromBody]PostDil dil)
+        public async Task<IActionResult> OnPostFizikselOzellikTipiListesiGetirAsync([FromBody] PostDil dil)
         {
-            
-            ApiResponse<List< FizikselOzellikTipi >> resp = await _fiziselOzellikService.FizikselOzellikTipiListe(dil.DilId);
+
+            ApiResponse<List<FizikselOzellikTipi>> resp = await _fiziselOzellikService.FizikselOzellikTipiListe(dil.DilId);
             OdiResult res = new OdiResult { Sonuc = true, Data = resp.Data };
             return Content(JsonSerializer.Serialize(res));
-        } 
-        public async Task<IActionResult> OnPostYeniFizikselOzellikAsync([FromBody] FizikselOzellikTipi tip)
+        }
+        public async Task<IActionResult> OnPostYeniFizikselOzellikTipiAsync([FromBody] FizikselOzellikTipi tip)
         {
             ApiResponse<List<FizikselOzellikTipi>> resp = await _fiziselOzellikService.YeniFizikselOzellikTipi(tip);
             OdiResult res = new OdiResult { Sonuc = true, Data = resp.Data };
             return Content(JsonSerializer.Serialize(res));
         }
-        public async Task<IActionResult> OnPostFizikselOzellikGuncelleAsync([FromBody] FizikselOzellikTipi tip)
+        public async Task<IActionResult> OnPostFizikselOzellikTipiGuncelleAsync([FromBody] FizikselOzellikTipi tip)
         {
             ApiResponse<List<FizikselOzellikTipi>> resp = await _fiziselOzellikService.FizikselOzellikTipiGuncelle(tip);
+            OdiResult res = new OdiResult { Sonuc = true, Data = resp.Data };
+            return Content(JsonSerializer.Serialize(res));
+        }
+        public async Task<IActionResult> OnPostFizikselOzellikTipiDurumDegistirAsync([FromBody] FizikselOzellikTipIdDTO tipId)
+        {
+            ApiResponse<List<FizikselOzellikTipi>> resp = await _fiziselOzellikService.FizikselOzellikTipiDurumDegistir(tipId);
             OdiResult res = new OdiResult { Sonuc = true, Data = resp.Data };
             return Content(JsonSerializer.Serialize(res));
         }
@@ -60,7 +67,9 @@ namespace OdiAdmin.Pages.UygulamaAyarlari.FizikselOzellikler
         {
             public int DilId { get; set; }
         }
+
+
     }
-    
+
 
 }
